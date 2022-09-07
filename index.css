@@ -1,0 +1,39 @@
+body {
+    background-color: coral;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+#grid {
+    text-align: center;
+    /* border: 1px solid black; */
+    margin-left: auto;
+    margin-right: auto;
+    width: 208px;
+    height: 208px;
+}
+
+.cell {
+    border: 1px solid white;
+    background-color: red;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+}
+
+#button-div {
+    text-align: center;
+}
+
+#alert{
+    text-align: center;
+}
+
+#alert-div{
+    text-align: center;
+}
