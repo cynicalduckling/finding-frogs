@@ -3,9 +3,10 @@ let gridElement = document.querySelector('#grid');
 let count = 0;
 
 // loop to create the div elements 
+let sideCount = 0;
 for (let i=0; i<16; i++){
     count++;
-
+    sideCount++;
     if (count===4){
         count=0;
         newDiv = document.createElement('div');
@@ -20,6 +21,12 @@ for (let i=0; i<16; i++){
     // if (count != 13 && count != 14 && count != 15 && count != 16){
     //     newDiv.style.borderBottom = "none";
     // }
+    if (sideCount === 1 || sideCount === 4 || sideCount === 13 || sideCount === 16){
+        if (sideCount === 1) {newDiv.style.borderTopLeftRadius = "15px";}
+        if (sideCount === 4) {newDiv.style.borderTopRightRadius = "15px";}
+        if (sideCount === 13) {newDiv.style.borderBottomLeftRadius = "15px";}
+        if (sideCount === 16) {newDiv.style.borderBottomRightRadius = "15px";}
+    }
 }
 
 let newGridElement = document.querySelector('#grid');
@@ -39,7 +46,8 @@ handleCellClick = (e) => {
     }
 
     if (newGridElement !== e.target){
-        if (e.target.style.backgroundColor != "#3CCF4E"){
+        if (e.target.style.backgroundColor != "rgb(60, 207, 78)"){
+            console.log(e.target.style.backgroundColor);
             e.target.style.backgroundImage = `url(${imageList[Math.floor(Math.random()*imageList.length)]})`;
         }
     }
@@ -75,14 +83,14 @@ handleSubmitButtonClick = () => {
         }else{
             medal = "Too slow, please delete the game";
         }
-        timerElement.innerHTML = `Time taken: ${((endTime-startTime)/1000)} seconds. \n \nYou have recieved the medal ---> ${medal}`;
-        alertElement.innerHTML = "ALL FROGS FOUND";
+        timerElement.innerHTML = `Time taken: ${((endTime-startTime)/1000)} seconds. \n \nYou are --> ${medal}`;
+        alertElement.innerHTML = "";
         for (let child of newGridElement.children){
-            child.style.backgroundColor = "red";
+            child.style.backgroundColor = "#EF5B0C";
         }
         firstClick = 0;
     }else{
-        alertElement.innerHTML = `${16-frogCheckCounter} FROGS REMAINING`;
+        alertElement.innerHTML = `FROGS REMAINING: ${16-frogCheckCounter} `;
         
     }
 }
