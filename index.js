@@ -17,6 +17,9 @@ for (let i=0; i<16; i++){
         newDiv.style.borderRight = "none";
         gridElement.appendChild(newDiv);
     }
+    // if (count != 13 && count != 14 && count != 15 && count != 16){
+    //     newDiv.style.borderBottom = "none";
+    // }
 }
 
 let newGridElement = document.querySelector('#grid');
@@ -36,7 +39,7 @@ handleCellClick = (e) => {
     }
 
     if (newGridElement !== e.target){
-        if (e.target.style.backgroundColor != "green"){
+        if (e.target.style.backgroundColor != "#3CCF4E"){
             e.target.style.backgroundImage = `url(${imageList[Math.floor(Math.random()*imageList.length)]})`;
         }
     }
@@ -45,6 +48,7 @@ newGridElement.style.boxSizing = "border-box";
 newGridElement.addEventListener('click', handleCellClick);
 
 let resetButton = document.querySelector('#reset');
+let submitButton = document.querySelector("#submit");
 let frogCheckCounter = 0;
 
 let timerElement = document.querySelector('#time');
@@ -55,7 +59,7 @@ handleSubmitButtonClick = () => {
     for (let child of newGridElement.children){
         if (child.style.backgroundImage.slice(4, -1).replace(/"/g, "") === imageList[1]){
             child.style.backgroundImage = "none";
-            child.style.backgroundColor = "green";
+            child.style.backgroundColor = "#3CCF4E";
             frogCheckCounter++;
         }
 
@@ -85,16 +89,14 @@ handleSubmitButtonClick = () => {
 
 handleResetButtonClick = () => {
     for (let child of newGridElement.children){
-        child.style.backgroundColor = "red";
-        child.style.backgroundImage = "green";
+        child.style.backgroundColor = "#EF5B0C";
+        child.style.backgroundImage = "none";
         firstClick = 0;
         frogCheckCounter = 0;
         timerElement.innerHTML = "";
         alertElement.innerHTML = "";
     }
 }
-
-let submitButton = document.querySelector("#submit");
 
 resetButton.addEventListener('click', handleResetButtonClick);
 submitButton.addEventListener('click', handleSubmitButtonClick);
